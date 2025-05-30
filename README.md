@@ -73,7 +73,7 @@ threads-app/
 ## 🚀 Instalación & Ejecución
 
 ### 1. Clona el repositorio:
-git clone https://github.com/TU_USUARIO/VaC306BotThreads.git
+Descargar los archivos del release mas actual
 
 ### 2. Configura entorno Android
 
