@@ -1,106 +1,120 @@
-# 🤖 Threads AutoPoster – Flask Edition
+# 🤖 Threads AutoPoster – Desktop Edition (PyWebView)
 
-Este proyecto combina un **bot automatizado en Python** para publicar en Instagram Threads con una **interfaz web en Flask**. Ahora puedes:
-
-- Subir tu Excel de mensajes.
-- Gestionar cuentas (añadir / eliminar hasta 5).
-- Arrancar / detener el bot con un solo clic.
-- Ver en tiempo real el **log de publicaciones** y la **cuenta atrás**.
+Este proyecto combina un **bot automatizado en Python** para publicar en Instagram Threads con una **interfaz de escritorio embebida usando PyWebView**. Ya no necesitas abrir tu navegador: todo está integrado en una app GUI nativa.
 
 ---
 
-## 📌 Descripción
+## ✨ Características
 
-1. **Backend (“bot/”)**  
-   - Usa Appium + ADB para controlar emuladores Android y la app `com.instagram.barcelona`.  
-   - Lee mensajes de `bot/mensajes.xlsx` y cuentas de `bot/accounts.json`.  
-   - Cicla: publica un mensaje por cuenta, espera 10 minutos (mostrable en la web) y repite indefinidamente.  
-   - Registra todo en `bot/log_publicaciones.txt` y en `bot/countdown.json` para la cuenta atrás.
-
-2. **Interfaz Flask**  
-   - **Index** (`/`): sube Excel, lanza/detiene el bot, muestra estado, cuenta atrás y log en vivo.  
-   - **Gestionar cuentas** (`/seleccionar_cuentas`): lista, añade y elimina hasta 5 cuentas.  
+- Subida de archivo `.xlsx` con frases.
+- Gestión visual de hasta 5 cuentas Threads (añadir / eliminar).
+- Publicación automática y cíclica cada 10 minutos.
+- Compatible con múltiples **dispositivos físicos Android** vía USB.
+- Log de publicaciones en tiempo real y cuenta atrás visual.
+- Tema claro/oscuro y diseño responsive con Bootstrap.
 
 ---
 
-## ⚙️ Tecnologías
+## 📌 Descripción Técnica
 
-- **Python 3.10+**  
-- **Flask 3.x** (templates, static, JSON endpoints)  
-- **Appium-Python-Client** (UiAutomator2)  
-- **ADB & Android Emulator SDK**  
-- **openpyxl** (leer `.xlsx`)  
-- **Bootstrap 5** (estilos responsive)
+1. **Bot (“bot/”)**
+   - Usa Appium + ADB para controlar dispositivos Android físicos conectados por USB.
+   - Lee mensajes desde `bot/mensajes.xlsx` y las cuentas desde `bot/accounts.json`.
+   - Ejecuta publicaciones en cada cuenta conectada → espera 10 minutos → repite.
+   - Todo se guarda en `bot/log_publicaciones.txt` y `bot/countdown.json`.
+
+2. **Interfaz de Escritorio con PyWebView**
+   - Renderiza los archivos `index.html` y `accounts.html` como si fuera una app web.
+   - La lógica del backend (subidas, estado del bot, logs, etc.) se ejecuta con Flask embebido.
+   - El backend usa hilos y subprocesses para lanzar el bot y manejar los puertos Appium.
 
 ---
 
-## 📁 Estructura
+## ⚙️ Tecnologías Usadas
+
+- **Python 3.10+**
+- **PyWebView** (para la GUI)
+- **Flask** (embebido en segundo plano, sin navegador)
+- **Appium-Python-Client** (UiAutomator2)
+- **ADB** (Android Debug Bridge)
+- **openpyxl** (para leer archivos `.xlsx`)
+- **Bootstrap 5** (estilo visual)
+- **cryptography** (licencias)
+
+---
+
+## 📁 Estructura del Proyecto
 
 threads-app/
-├── app.py ← Servidor Flask
-├── requirements.txt ← Dependencias (Flask, Appium,…)
+├── app.py ← Lanza la GUI con PyWebView
+├── requirements.txt ← Dependencias
 ├── templates/
-│ ├── index.html ← UI principal
-│ └── accounts.html ← Gestión de cuentas
+│ ├── index.html ← Pantalla principal (subida, estado, log)
+│ └── accounts.html ← Pantalla de gestión de cuentas
 ├── static/
-│ └── styles.css ← Estilos custom + Bootstrap CDN
-└── bot/
-├── bot.py ← Lógica de publicación
-├── lanzar_appium_multi.py
-├── liberar_puerto.py
-├── reiniciar_emuladores.py
-├── verify.py
-├── mensajes.xlsx ← Excel de mensajes
-├── accounts.json ← Listado de cuentas (máx. 5)
-└── log_publicaciones.txt ← Log de ejecución
+│ └── styles.css ← Tema claro/oscuro + estilo Bootstrap
+├── license.key ← Licencia de uso
+├── public_key.pem ← Clave pública para validación de licencia
+├── python_path.txt ← Ruta del ejecutable de Python
+├── bot/
+│ ├── bot.py ← Lógica principal del bot
+│ ├── lanzar_appium_multi.py
+│ ├── liberar_puerto.py
+│ ├── reiniciar_emuladores.py
+│ ├── verify.py
+│ ├── mensajes.xlsx ← Archivo con frases (una por fila)
+│ ├── accounts.json ← Hasta 5 cuentas Threads
+│ ├── log_publicaciones.txt
+│ └── countdown.json ← Tiempo restante (actualizado por el bot)
 
 
 ---
 
 ## 🚀 Instalación & Ejecución
 
-1. **Clona el repositorio**  
-   ```bash
-   git clone https://github.com/TU_USUARIO/threads-app.git
-   cd threads-app
+### 1. Clona el repositorio:
+git clone https://github.com/TU_USUARIO/VaC306BotThreads.git
 
-2. **Crea y activa tu virtualenv**
-    python -m venv .venv
-    # PowerShell:
-    . .\.venv\Scripts\Activate.ps1
-    # CMD:
-    .venv\Scripts\activate.bat
+### 2. Configura entorno Android
 
-3. **Instala dependencias**
-    pip install -r requirements.txt
+    Instala Node.js + npm
 
-4. **Configura tus emuladores y appium**
-    Asegúrate de tener AVDs creados (por ejemplo Pixel_7) y Appium instalado
-    Ajusta nombres de AVD o puertos en bot.py si es necesario.
+    Instala Appium globalmente:
 
-5. **Arranca el servidor Flask**
-    python app.py
+npm install -g appium
+appium driver install uiautomator2
 
-    Por defecto escuchará en http://127.0.0.1:5000/.
+Asegúrate de que tienes ANDROID_HOME y ANDROID_SDK_ROOT configurados.
+
+Verifica con:
+
+    verificar_entorno.py
+
+### 3. Ejecuta la app
+
+haz click en VaC306BotThreads.exe
 
 
-🍔 Uso
+🧠 Uso
 
-    Sube tu Excel (.xlsx) con los mensajes (una frase por fila, desde la segunda).
+    En la interfaz:
 
-    Haz clic en “⚙️ Gestionar cuentas” para añadir o eliminar cuentas (máximo 5).
+        Sube tu Excel .xlsx con las frases desde la segunda fila.
 
-    Vuelve al Inicio y pulsa “🚀 Lanzar” para arrancar el bot.
+        Añade hasta 5 cuentas Threads desde el apartado ⚙️ “Gestionar cuentas”.
 
-    Mira en tiempo real la barra de progreso (cuenta atrás) y el log de publicaciones.
+        Pulsa 🚀 Lanzar para comenzar.
 
-    Para detener el bot, pulsa “✋ Detener”.
+        Observa en vivo el log y la cuenta atrás.
 
+        Pulsa ✋ Detener para parar el ciclo de publicación.
 
-🔒 Aviso Legal
+🔐 Licencia
 
-Este proyecto es solo con fines educativos y de práctica con Appium y Flask.
-El uso de bots en plataformas de terceros puede violar sus TOS.
-⚠️ No me responsabilizo de usos indebidos.
+Este software requiere una licencia válida (license.key) firmada con tu clave privada. La licencia se valida al inicio con public_key.pem.
+⚠️ Aviso Legal
+
+Este proyecto es solo con fines educativos y de práctica con automatización móvil.
+El uso de bots en redes sociales puede violar sus términos de uso.
 
 Autor: VaC306
