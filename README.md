@@ -1,3 +1,10 @@
+<div align="center">
+  <a href="https://discord.com/users/TU_ID_AQUÍ" target="_blank">
+    <img src="https://img.shields.io/badge/🗨️_Contáctame_en_Discord_-elpursi_306_-7289da?style=for-the-badge&logo=discord&logoColor=white"/>
+  </a>
+</div>
+
+
 # 🤖 Threads AutoPoster – Desktop Edition (PyWebView)
 
 Este proyecto combina un **bot automatizado en Python** para publicar en Instagram Threads con una **interfaz de escritorio embebida usando PyWebView**. Ya no necesitas abrir tu navegador: todo está integrado en una app GUI nativa.
