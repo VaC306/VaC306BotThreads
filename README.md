@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://discord.com/users/TU_ID_AQUÍ" target="_blank">
+  <a href="https://discord.com/users/elpursi_306_" target="_blank">
     <img src="https://img.shields.io/badge/🗨️_Contáctame_en_Discord_-elpursi_306_-7289da?style=for-the-badge&logo=discord&logoColor=white"/>
   </a>
 </div>
