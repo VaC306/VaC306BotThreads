@@ -90,12 +90,15 @@ Descargar los archivos del release mas actual
 
 npm install -g appium
 appium driver install uiautomator2
-
 Asegúrate de que tienes ANDROID_HOME y ANDROID_SDK_ROOT configurados.
 
 Verifica con:
 
     verificar_entorno.py
+
+y crea el python_path.txt con el 
+
+    crear_python_path.py
 
 ### 3. Ejecuta la app
 
