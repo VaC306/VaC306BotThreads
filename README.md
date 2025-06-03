@@ -100,9 +100,13 @@ y crea el python_path.txt con el
 
     crear_python_path.py
 
+asegurate tambien de tener un mensajes.xlsx (Google sheets or excel)
+
+    subelo en la aplicacion y listo!
+
 ### 3. Ejecuta la app
 
-haz click en VaC306BotThreads.exe
+    haz click en VaC306BotThreads.exe
 
 
 🧠 Uso
