@@ -145,10 +145,11 @@ asegurate tambien de tener un mensajes.xlsx (Google sheets or excel)
 
 🔐 Licencia
 
-Este software requiere una licencia válida (license.key) firmada con tu clave privada. La licencia se valida al inicio con public_key.pem.
+    Este software requiere una licencia válida (license.key) firmada con tu clave privada. La licencia se valida al inicio con public_key.pem.
+
 ⚠️ Aviso Legal
 
-Este proyecto es solo con fines educativos y de práctica con automatización móvil.
-El uso de bots en redes sociales puede violar sus términos de uso.
+    Este proyecto es solo con fines educativos y de práctica con automatización móvil.
+    El uso de bots en redes sociales puede violar sus términos de uso.
 
 Autor: VaC306
