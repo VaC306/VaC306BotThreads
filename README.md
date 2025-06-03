@@ -54,25 +54,45 @@ Este proyecto combina un **bot automatizado en Python** para publicar en Instagr
 
 threads-app/
 ├── app.py ← Lanza la GUI con PyWebView
+
 ├── requirements.txt ← Dependencias
+
 ├── templates/
+
 │ ├── index.html ← Pantalla principal (subida, estado, log)
+
 │ └── accounts.html ← Pantalla de gestión de cuentas
+
 ├── static/
+
 │ └── styles.css ← Tema claro/oscuro + estilo Bootstrap
+
 ├── license.key ← Licencia de uso
+
 ├── public_key.pem ← Clave pública para validación de licencia
+
 ├── python_path.txt ← Ruta del ejecutable de Python
+
 ├── bot/
+
 │ ├── bot.py ← Lógica principal del bot
+
 │ ├── lanzar_appium_multi.py
+
 │ ├── liberar_puerto.py
+
 │ ├── reiniciar_emuladores.py
+
 │ ├── verify.py
+
 │ ├── mensajes.xlsx ← Archivo con frases (una por fila)
+
 │ ├── accounts.json ← Hasta 5 cuentas Threads
+
 │ ├── log_publicaciones.txt
+
 │ └── countdown.json ← Tiempo restante (actualizado por el bot)
+
 
 
 ---
